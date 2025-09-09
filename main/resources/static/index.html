@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Release Management Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Release Management & Deployment Tracker</h1>
+            <nav>
+                <button id="usersTab" class="nav-btn active">Users</button>
+                <button id="releasesTab" class="nav-btn">Releases</button>
+                <button id="logsTab" class="nav-btn">Deployment Logs</button>
+            </nav>
+        </header>
+
+        <!-- Users Section -->
+        <section id="usersSection" class="section active">
+            <h2>User Management</h2>
+            <div class="form-container">
+                <h3>Add New User</h3>
+                <form id="userForm">
+                    <input type="text" id="username" placeholder="Username" required>
+                    <input type="email" id="email" placeholder="Email" required>
+                    <input type="text" id="fullName" placeholder="Full Name" required>
+                    <select id="role" required>
+                        <option value="">Select Role</option>
+                        <option value="ADMIN">Admin</option>
+                        <option value="DEVELOPER">Developer</option>
+                        <option value="QA">QA</option>
+                    </select>
+                    <button type="submit">Add User</button>
+                </form>
+            </div>
+            <div class="data-container">
+                <h3>Users</h3>
+                <table id="usersTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Full Name</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Releases Section -->
+        <section id="releasesSection" class="section">
+            <h2>Release Management</h2>
+            <div class="form-container">
+                <h3>Create New Release</h3>
+                <form id="releaseForm">
+                    <input type="text" id="versionNumber" placeholder="Version (e.g., 1.0.0)" pattern="\d+\.\d+\.\d+" required>
+                    <textarea id="description" placeholder="Release Description" required></textarea>
+                    <select id="ownerId" required>
+                        <option value="">Select Owner</option>
+                    </select>
+                    <button type="submit">Create Release</button>
+                </form>
+            </div>
+            <div class="data-container">
+                <h3>Releases</h3>
+                <table id="releasesTable">
+                    <thead>
+                        <tr>
+                            <th>Version</th>
+                            <th>Description</th>
+                            <th>Owner</th>
+                            <th>Environment</th>
+                            <th>Created</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Deployment Logs Section -->
+        <section id="logsSection" class="section">
+            <h2>Deployment History</h2>
+            <div class="filters">
+                <select id="environmentFilter">
+                    <option value="">All Environments</option>
+                    <option value="DEV">Development</option>
+                    <option value="QA">QA</option>
+                    <option value="UAT">UAT</option>
+                    <option value="PROD">Production</option>
+                </select>
+                <select id="statusFilter">
+                    <option value="">All Status</option>
+                    <option value="true">Successful</option>
+                    <option value="false">Failed</option>
+                </select>
+                <button id="refreshLogs">Refresh</button>
+            </div>
+            <div class="data-container">
+                <table id="logsTable">
+                    <thead>
+                        <tr>
+                            <th>Release</th>
+                            <th>Environment</th>
+                            <th>Deployed By</th>
+                            <th>Timestamp</th>
+                            <th>Status</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
